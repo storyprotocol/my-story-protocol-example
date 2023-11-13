@@ -8,7 +8,7 @@ client.ipAsset.create({
   ipAssetName: "Another Story",
   description: "A short story about how to develop apps",
   mediaUrl: "https://storyprotocol.readme.io/",
-  to: "0xc9867532634f43D395d3D2eb3A616d39BF1A86E4",
+  to: "0xc0246081FD87Fc0aa29570F7ABafD0A69a2Ca05F",
   parentIpAssetId: "395",
 }).then(({ txHash }) => {
   console.log(txHash);
