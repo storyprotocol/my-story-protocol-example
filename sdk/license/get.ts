@@ -1,6 +1,6 @@
 import { client } from '../utils';
 
-client.ipAsset.get({ ipAssetId: '1', franchiseId: '432' })
+client.license.get({ licenseId: '5' })
   .then(({ data }) => {
     console.log(data);
   });
