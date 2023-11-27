@@ -1,18 +1,17 @@
 // utils.ts
 import { StoryClient, Environment } from "@story-protocol/core-sdk";
-import { ethers } from "ethers";
+import { privateKeyToAccount } from "viem/accounts";
 import { config } from "dotenv";
 config();
 
-const RPC_URL = process.env.RPC_URL || "";
-const PRIVATE_KEY = process.env.PRIVATE_KEY || "";
+const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x";
 
-// Signer from private key
-const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
-const signer = new ethers.Wallet(PRIVATE_KEY, provider);
+// Instantiate the Story Client for readonly operations, test environment required for alpha release
+export const realonlyClient = StoryClient.newReadOnlyClient({ environment: Environment.TEST });
 
-// Instantiate the Story Client, test environment required for alpha release
+// Instantiate the Story Client, test environment required for alpha release.
+// The private key is also required for written operations.
 export const client = StoryClient.newClient({
   environment: Environment.TEST,
-  signer
+  account: privateKeyToAccount(PRIVATE_KEY as `0x${string}`)
 });
