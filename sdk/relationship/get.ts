@@ -1,6 +1,6 @@
 import { client } from '../utils';
 
-client.relationship.get({ licenseId: '5' })
-  .then(({ data }) => {
-    console.log(data);
+client.relationship.get({ relationshipId: '187' })
+  .then(({relationship}) => {
+    console.log(relationship);
   });
