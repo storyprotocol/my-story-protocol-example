@@ -2,6 +2,9 @@
 
 ## AccessControlled
 
+This contract is to be inherited by any protocol components that require granular
+        roles for execution, as defined by the Access Control Singleton contract.
+
 ### onlyRole
 
 ```solidity
@@ -14,7 +17,7 @@ Checks if msg.sender has `role`, reverts if not.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| role_ | bytes32 | the role to be tested, defined in Roles.sol and set in AccessManager instance. |
+| role_ | bytes32 | the role to be tested, defined in Roles.sol and set in AccessControlSingleton instance. |
 
 ### constructor
 
@@ -22,13 +25,21 @@ Checks if msg.sender has `role`, reverts if not.
 constructor(address accessControl_) internal
 ```
 
+Instantiates a new Access Controlled contract.
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| accessControl_ | address | The global Access Control Singleton contract address. |
+
 ### setAccessControl
 
 ```solidity
 function setAccessControl(address accessControl_) public
 ```
 
-Sets AccessManager instance. Restricted to PROTOCOL_ADMIN_ROLE
+Sets AccessControlSingleton instance. Restricted to PROTOCOL_ADMIN_ROLE
 
 #### Parameters
 
@@ -36,10 +47,10 @@ Sets AccessManager instance. Restricted to PROTOCOL_ADMIN_ROLE
 | ---- | ---- | ----------- |
 | accessControl_ | address | address of the new instance of AccessControlSingleton. |
 
-### hasRole
+### _hasRole
 
 ```solidity
-function hasRole(bytes32 role_, address account_) internal view returns (bool)
+function _hasRole(bytes32 role_, address account_) internal view returns (bool)
 ```
 
 Checks if `account has `role` assigned.
@@ -48,7 +59,7 @@ Checks if `account has `role` assigned.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| role_ | bytes32 | the role to be tested, defined in Roles.sol and set in AccessManager instance. |
+| role_ | bytes32 | the role to be tested, defined in Roles.sol and set in AccessControlSingleton instance. |
 | account_ | address | the address to be tested for the role. |
 
 #### Return Values

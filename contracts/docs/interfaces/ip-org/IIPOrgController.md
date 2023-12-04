@@ -7,7 +7,7 @@ IP Org Controller Interface
 ### IPOrgRegistered
 
 ```solidity
-event IPOrgRegistered(address owner_, address ipAssetOrg_, string name_, string symbol_)
+event IPOrgRegistered(address owner, address ipAssetOrg, string name, string symbol, string[] ipAssetTypes)
 ```
 
 Emits when a new IP Org is registered.
@@ -16,15 +16,16 @@ Emits when a new IP Org is registered.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| owner_ | address | The address of the IP Org owner. |
-| ipAssetOrg_ | address | The address of the new IP Org contract. |
-| name_ | string | Descriptive name for the new IP Org contract. |
-| symbol_ | string | A describe symbol for the new IP Org contract. |
+| owner | address | The address of the IP Org owner. |
+| ipAssetOrg | address | The address of the new IP Org contract. |
+| name | string | Descriptive name for the new IP Org contract. |
+| symbol | string | A describe symbol for the new IP Org contract. |
+| ipAssetTypes | string[] | String descriptors of the IP asset types available. |
 
 ### IPOrgTransferred
 
 ```solidity
-event IPOrgTransferred(address ipOrg_, address prevOwner_, address newOwner_)
+event IPOrgTransferred(address ipOrg, address prevOwner, address newOwner)
 ```
 
 Emits when an IP Org is transferred to a new owner.
@@ -33,14 +34,14 @@ Emits when an IP Org is transferred to a new owner.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| ipOrg_ | address | The address of the IP Org. |
-| prevOwner_ | address | The address of the previous owner of the IP Org. |
-| newOwner_ | address | The address of the new owner of the IP Org. |
+| ipOrg | address | The address of the IP Org. |
+| prevOwner | address | The address of the previous owner of the IP Org. |
+| newOwner | address | The address of the new owner of the IP Org. |
 
 ### IPOrgPendingOwnerSet
 
 ```solidity
-event IPOrgPendingOwnerSet(address ipOrg_, address pendingOwner_)
+event IPOrgPendingOwnerSet(address ipOrg, address pendingOwner)
 ```
 
 Emits when an ownership transfer is initialized for a new owner.
@@ -49,8 +50,8 @@ Emits when an ownership transfer is initialized for a new owner.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| ipOrg_ | address | The address of the IP Org. |
-| pendingOwner_ | address | The pending owner to set for the IP Org. |
+| ipOrg | address | The address of the IP Org. |
+| pendingOwner | address | The pending owner to set for the IP Org. |
 
 ### registerIpOrg
 

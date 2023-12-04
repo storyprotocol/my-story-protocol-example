@@ -10,6 +10,7 @@ client.relationship.registerRelationshipType({
   preHooksConfig: [],
   postHooksConfig: [],
   "txOptions": { waitForTransaction: true }
-}).then(response => {
-  console.log(response);
+}).then(({txHash, success}) => {
+  console.log("txHash:", txHash);
+  console.log("success:", success);
 });

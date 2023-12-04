@@ -5,7 +5,7 @@
 ### Registered
 
 ```solidity
-event Registered(uint256 ipAssetId_, string name_, uint64 ipAssetType_, address ipOrg_, address registrant_, bytes32 hash_)
+event Registered(uint256 ipAssetId_, string name_, address ipOrg_, address registrant_, bytes32 hash_)
 ```
 
 Emits when a new IP asset is registered.
@@ -16,7 +16,6 @@ Emits when a new IP asset is registered.
 | ---- | ---- | ----------- |
 | ipAssetId_ | uint256 | The global IP asset identifier. |
 | name_ | string | The assigned name for the IP asset. |
-| ipAssetType_ | uint64 | The status indicator for the IP asset. |
 | ipOrg_ | address | The registering governing body for the IP asset. |
 | registrant_ | address | The initial individual registrant of the IP asset. |
 | hash_ | bytes32 | The content hash associated with the IP asset. |

@@ -2,6 +2,10 @@
 
 ## IPOrgController
 
+The IP Org Controller is the protocol-wide factory contract for creating
+        and tracking IP Orgs. On top of this, it acts as the ownership controller
+        for IP Orgs, allowing orgs to transfer ownership through a 2-step process.
+
 ### IPOrgRecord
 
 ```solidity

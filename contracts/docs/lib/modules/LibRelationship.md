@@ -66,10 +66,8 @@ struct CreateRelationshipParams {
   string relType;
   address srcAddress;
   uint256 srcId;
-  uint8 srcType;
   address dstAddress;
   uint256 dstId;
-  uint8 dstType;
 }
 ```
 

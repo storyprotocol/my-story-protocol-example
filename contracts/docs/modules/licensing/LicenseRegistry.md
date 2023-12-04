@@ -16,7 +16,7 @@ event LicenseRegistered(uint256 id)
 ### LicenseNftBoundedToIpa
 
 ```solidity
-event LicenseNftBoundedToIpa(uint256 licenseId, uint256 ipaId)
+event LicenseNftBoundedToIpa(uint256 licenseId, uint256 ipAssetId)
 ```
 
 ### LicenseActivated

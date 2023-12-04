@@ -33,7 +33,7 @@ uint256 MAX_HOOKS
 ### HooksRegistered
 
 ```solidity
-event HooksRegistered(enum HookRegistry.HookType hType, bytes32 registryKey, address[] hook)
+event HooksRegistered(enum HookRegistry.HookType hType, bytes32 registryKey, address[] hooks)
 ```
 
 ### HooksCleared

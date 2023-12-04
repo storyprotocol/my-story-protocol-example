@@ -2,8 +2,11 @@
 
 ## IPOrg
 
-IP Asset Organization
-TODO(leeren): Deprecate upgradeability once the IPOrg contracts is finalized.
+An IP Org represents a collection of IP Assets governed under a single
+        administrative entity. It serves both as an org-branded NFT wrapper of
+        the IP Asset group and as a conduit used by the IP registration module
+        for transferring IP ownership and configuring its IP-related metadata.
+        Crations of new IP Orgs happen through the IP Org Controller contract.
 
 ### lastIndex
 
@@ -132,7 +135,7 @@ Initializes an IP Org.
 ### mint
 
 ```solidity
-function mint(address owner_) public returns (uint256 id)
+function mint(address owner_, uint8 assetType_) public returns (uint256 id)
 ```
 
 Registers a new IP Asset wrapper for the IP Org.
@@ -165,5 +168,19 @@ Transfers ownership of an IP Asset within an Org to a new owner.
 | ---- | ---- | ----------- |
 | from_ | address | The original owner of the IP asset in the IP Org. |
 | to_ | address | The new owner of the IP asset in the IP Org. |
+| id_ | uint256 | The identifier of the IP asset within the IP Org. |
+
+### ipOrgAssetType
+
+```solidity
+function ipOrgAssetType(uint256 id_) public view returns (uint8)
+```
+
+Returns the IP Org asset type for a given IP Org asset.
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
 | id_ | uint256 | The identifier of the IP asset within the IP Org. |
 

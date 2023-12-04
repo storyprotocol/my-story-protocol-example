@@ -4,12 +4,6 @@
 
 _Gives tools to check if the "endpoints" of a relationship are valid, according to the allowed asset types set in the relationship config._
 
-### UNDEFINED
-
-```solidity
-uint8 UNDEFINED
-```
-
 ### _convertToMask
 
 ```solidity

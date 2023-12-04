@@ -2,6 +2,13 @@
 
 ## StoryProtocol
 
+The Story Protocol contract acts as a global gateway for calling all
+        protocol-standardized IP actions (based on their enrolled modules).
+        Most functions can be solely executed through this contract, as it will
+        be actively maintained and upgraded to support all standardized modules.
+        In the future, for more customized logic, IP Orgs may choose to create 
+        their own frontend contracts (gateways) for IP interaction.
+
 ### IP_ORG_CONTROLLER
 
 ```solidity

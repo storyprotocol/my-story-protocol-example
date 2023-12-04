@@ -2,14 +2,18 @@
 
 ## IPAssetRegistry
 
-The source of truth for IP on Story Protocol.
+The global IP Asset Registry (GIPR) acts as the source of truth for IP
+        attribution in Story Protocol. All IP must be registered through a
+        protocol-approved registration module, which as part of the process will
+        create a record in the GIPR. Note that the GIPR only defines the core
+        attributes related to an IP asset - all other attributes, which will be
+        specific for a given module, will be queried through the module registry.
 
 ### IPA
 
 ```solidity
 struct IPA {
   string name;
-  uint64 ipAssetType;
   address registrant;
   uint8 status;
   address ipOrg;
@@ -78,7 +82,7 @@ Initializes the Global IP Asset Registry.
 ### register
 
 ```solidity
-function register(address ipOrg_, address registrant_, string name_, uint64 ipAssetType_, bytes32 hash_) public returns (uint256 ipAssetId)
+function register(address ipOrg_, address registrant_, string name_, bytes32 hash_) public returns (uint256 ipAssetId)
 ```
 
 Registers a new IP asset.
@@ -90,7 +94,6 @@ Registers a new IP asset.
 | ipOrg_ | address |  |
 | registrant_ | address | The initial registrant for the IP asset. |
 | name_ | string | A name given to describe the IP asset. |
-| ipAssetType_ | uint64 | A numerical code corresponding to IP asset type. |
 | hash_ | bytes32 | A content hash used for verifyign provenance of the asset. |
 
 ### transferIPOrg

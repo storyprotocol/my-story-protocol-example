@@ -2,10 +2,10 @@
 
 ## AccessControlSingleton
 
-AccessControlSingleton contract. Manages protocol admin keys. Other contracts might inherit
-AccessControlled or its upgradeable version to use the onlyRole modifier.
-TODO: Evaluate making this contract AccessControlEnumerableUpgradeable so it could enforce unique roles
-(as in only 1 address can have a role at a time)
+This contract serves as the global source of truth for role-based authorization.
+        Contracts that inherit the AccessControlled contract or its upgradable variant
+        are may be granted granular access to certain roles by utilizing the `onlyRole`
+        modifier with the required role input as a parameter.
 
 ### version
 

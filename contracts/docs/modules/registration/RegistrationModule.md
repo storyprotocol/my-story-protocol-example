@@ -2,7 +2,10 @@
 
 ## RegistrationModule
 
-Handles registration and transferring of IP assets..
+The registration module is responsible for registration, transferring, and
+        metadata management of IP assets. During registration, this module will
+        create register the IP asset in the global IP asset registry, and then
+        wrap it as an NFT under its governing IP Org.
 
 ### IPOrgAsset
 
@@ -44,6 +47,14 @@ mapping(address => mapping(uint256 => string)) tokenUris
 ```
 
 IP Org asset to its tokenURI.
+
+### MAX_IP_ORG_ASSET_TYPES
+
+```solidity
+uint256 MAX_IP_ORG_ASSET_TYPES
+```
+
+Maximum number of Ip Org asset types.
 
 ### constructor
 
@@ -89,7 +100,7 @@ Gets the contract URI for an IP Org.
 ### tokenURI
 
 ```solidity
-function tokenURI(address ipOrg_, uint256 ipOrgAssetId_) public view returns (string)
+function tokenURI(address ipOrg_, uint256 ipOrgAssetId_, uint8 ipOrgAssetType_) public view returns (string)
 ```
 
 Renders metadata of an IP Asset localized for an IP Org.
@@ -100,12 +111,23 @@ Renders metadata of an IP Asset localized for an IP Org.
 | ---- | ---- | ----------- |
 | ipOrg_ | address | The address of the IP Org of the IP asset. |
 | ipOrgAssetId_ | uint256 | The local id of the IP asset within the IP Org. |
+| ipOrgAssetType_ | uint8 | The IP Org asset type. |
 
-### getIPAssetTypes
+### getIpOrgAssetTypes
 
 ```solidity
-function getIPAssetTypes(address ipOrg_) public view returns (string[])
+function getIpOrgAssetTypes(address ipOrg_) public view returns (string[])
 ```
+
+Gets the asset types of an IP Org.
+
+### isValidIpOrgAssetType
+
+```solidity
+function isValidIpOrgAssetType(address ipOrg_, uint8 assetTypeIndex_) public view returns (bool)
+```
+
+returns true if the index for an IP Org asset type is supported.
 
 ### ownerOf
 
@@ -178,7 +200,7 @@ Registers an IP Asset.
 ### _registerIPAsset
 
 ```solidity
-function _registerIPAsset(contract IIPOrg ipOrg_, address owner_, string name_, uint64 ipAssetType_, bytes32 hash_, string mediaUrl_) internal returns (uint256 ipAssetId_, uint256 ipOrgAssetId_)
+function _registerIPAsset(contract IIPOrg ipOrg_, address owner_, string name_, uint8 ipOrgAssetType_, bytes32 hash_, string mediaUrl_) internal returns (uint256 ipAssetId_, uint256 ipOrgAssetId_)
 ```
 
 _Registers a new IP asset and wraps it under the provided IP Org._
@@ -190,7 +212,7 @@ _Registers a new IP asset and wraps it under the provided IP Org._
 | ipOrg_ | contract IIPOrg | The governing entity of the IP asset being registered. |
 | owner_ | address | The initial registrant and owner of the IP asset. |
 | name_ | string | A descriptive name for the IP asset being registered. |
-| ipAssetType_ | uint64 | A numerical identifier for the IP asset type. |
+| ipOrgAssetType_ | uint8 | A numerical identifier for the IP asset type. |
 | hash_ | bytes32 | The content hash of the IP asset being registered. |
 | mediaUrl_ | string | The media URL of the IP asset being registered. |
 
@@ -214,7 +236,7 @@ _Transfers ownership of an IP asset to a new owner._
 ### _transferIPAssetToIPOrg
 
 ```solidity
-function _transferIPAssetToIPOrg(address fromIpOrg_, uint256 fromIpOrgAssetId_, address toIpOrg_, address from_, address to_) internal returns (uint256 ipAssetId_, uint256 ipOrgAssetId_)
+function _transferIPAssetToIPOrg(address fromIpOrg_, uint256 fromIpOrgAssetId_, address toIpOrg_, uint8 toIpOrgType_, address from_, address to_) internal returns (uint256 ipAssetId_, uint256 ipOrgAssetId_)
 ```
 
 _Transfers an IP asset to a new governing IP Org._
@@ -225,14 +247,15 @@ _Transfers an IP asset to a new governing IP Org._
 | ---- | ---- | ----------- |
 | fromIpOrg_ | address | The address of the original governing IP Org. |
 | fromIpOrgAssetId_ | uint256 | The existing id of the IP asset within the IP Org. |
-| toIpOrg_ | address | The address of the new governing IP Org. TODO(leeren) Expose this function to FE once IP Orgs are finalized. |
+| toIpOrg_ | address | The address of the new governing IP Org. |
+| toIpOrgType_ | uint8 | The type of the IP asset within the new IP Org. TODO(leeren) Expose this function to FE once IP Orgs are finalized. |
 | from_ | address |  |
 | to_ | address |  |
 
 ### _addIPAssetTypes
 
 ```solidity
-function _addIPAssetTypes(address ipOrg_, string[] ipAssetTypes_) internal
+function _addIPAssetTypes(address ipOrg_, string[] ipOrgTypes_) internal
 ```
 
 _Adds new IP asset types to an IP Org._
@@ -242,7 +265,7 @@ _Adds new IP asset types to an IP Org._
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | ipOrg_ | address | The address of the IP Org whose asset types we are adding. |
-| ipAssetTypes_ | string[] | String descriptors of the asset types being added. TODO: Add ability to deprecate asset types. |
+| ipOrgTypes_ | string[] | String descriptors of the asset types being added. TODO: Add ability to deprecate asset types. |
 
 ### _setMetadata
 

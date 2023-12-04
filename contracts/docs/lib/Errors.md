@@ -404,20 +404,6 @@ IP account initialization failed.
 error LibUintArrayMask_EmptyArray()
 ```
 
-### LibUintArrayMask_UndefinedArrayElement
-
-```solidity
-error LibUintArrayMask_UndefinedArrayElement()
-```
-
-### LibUintArrayMask_InvalidType
-
-```solidity
-error LibUintArrayMask_InvalidType(enum IPAsset.IPAssetType ipAsset)
-```
-
-IP asset is invalid.
-
 ### IPOrg_IdOverBounds
 
 ```solidity
@@ -433,6 +419,14 @@ error IPOrg_LicensingNotConfigured()
 ```
 
 Licensing is not configured.
+
+### IPOrg_IdDoesNotExist
+
+```solidity
+error IPOrg_IdDoesNotExist()
+```
+
+IP Org wrapper id does not exist.
 
 ### IPOrgController_InvalidOwner
 
@@ -742,6 +736,23 @@ error RegistrationModule_InvalidExecutionOperation()
 
 The registration execution action is not valid.
 
+### RegistrationModule_InvalidIPAssetType
+
+```solidity
+error RegistrationModule_InvalidIPAssetType()
+```
+
+IP asset type is not in the list of supported types for
+the IP Org.
+
+### RegistrationModule_TooManyAssetTypes
+
+```solidity
+error RegistrationModule_TooManyAssetTypes()
+```
+
+IPAsset types provided are more than the maximum allowed.
+
 ### RelationshipModule_CannotRelateToOtherIPOrg
 
 ```solidity
@@ -804,11 +815,15 @@ The relationship destination IP type is not supported.
 error RelationshipModule_InvalidConfigOperation()
 ```
 
+Trying an unsupported config action
+
 ### RelationshipModule_CallerNotIpOrgOwner
 
 ```solidity
 error RelationshipModule_CallerNotIpOrgOwner()
 ```
+
+Unauthorized caller
 
 ### RelationshipModule_InvalidRelatable
 
@@ -816,11 +831,15 @@ error RelationshipModule_CallerNotIpOrgOwner()
 error RelationshipModule_InvalidRelatable()
 ```
 
+Value not on Relatable enum
+
 ### RelationshipModule_RelTypeNotSet
 
 ```solidity
 error RelationshipModule_RelTypeNotSet(string relType)
 ```
+
+Getting an invalid relationship type
 
 ### RelationshipModule_InvalidSrcAddress
 
@@ -828,11 +847,15 @@ error RelationshipModule_RelTypeNotSet(string relType)
 error RelationshipModule_InvalidSrcAddress()
 ```
 
+Relating invalid src addresss
+
 ### RelationshipModule_InvalidDstAddress
 
 ```solidity
 error RelationshipModule_InvalidDstAddress()
 ```
+
+Relating invalid dst addresss
 
 ### RelationshipModule_InvalidSrcId
 
@@ -840,11 +863,32 @@ error RelationshipModule_InvalidDstAddress()
 error RelationshipModule_InvalidSrcId()
 ```
 
+Relating unsupported src ipOrg asset type
+
 ### RelationshipModule_InvalidDstId
 
 ```solidity
 error RelationshipModule_InvalidDstId()
 ```
+
+Relating unsupported dst ipOrg asset type
+
+### RelationshipModule_IpOrgRelatableCannotBeProtocolLevel
+
+```solidity
+error RelationshipModule_IpOrgRelatableCannotBeProtocolLevel()
+```
+
+For IPORG_ENTRY - IPORG_ENTRY relationships,
+ipOrg address must be set
+
+### RelationshipModule_UnsupportedIpOrgIndexType
+
+```solidity
+error RelationshipModule_UnsupportedIpOrgIndexType()
+```
+
+Index is not found for the asset types of that IP Org.
 
 ### RoyaltyNFT_AccountsAndAllocationsMismatch
 
@@ -901,14 +945,6 @@ error TokenGatedHook_NotTokenOwner(address tokenAddress, address ownerAddress)
 ```
 
 The address is not the owner of the token.
-
-### IPOrgWhitelistHook_NotWhitelisted
-
-```solidity
-error IPOrgWhitelistHook_NotWhitelisted(address userAddress, address ipOrgAddress)
-```
-
-The address is not whitelisted for an IP Org to perform actions
 
 ### LicensorApprovalHook_ApprovalAlreadyRequested
 

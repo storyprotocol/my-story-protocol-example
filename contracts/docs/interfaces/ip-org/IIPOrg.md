@@ -47,7 +47,7 @@ _This function is only callable by the IP Org registration module._
 ### mint
 
 ```solidity
-function mint(address owner) external returns (uint256 id)
+function mint(address owner, uint8 assetType) external returns (uint256 id)
 ```
 
 Mints an IP Asset wrapper for the IP Org.
@@ -59,6 +59,7 @@ _This function is only callable by the IP Org registration module._
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | owner | address | Address of the current owner of the local IP Org asset. |
+| assetType | uint8 | The IP Org asset type. |
 
 #### Return Values
 
@@ -81,4 +82,12 @@ function contractURI() external view returns (string)
 ```
 
 Returns contract-level metadata for the IP Org.
+
+### ipOrgAssetType
+
+```solidity
+function ipOrgAssetType(uint256 id_) external view returns (uint8)
+```
+
+Returns the Ip Org asset type for a given IP Org asset.
 

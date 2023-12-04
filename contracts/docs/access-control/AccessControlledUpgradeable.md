@@ -2,6 +2,9 @@
 
 ## AccessControlledUpgradeable
 
+This contract is to be inherited by any upgradeable protocol components that require 
+        granular roles for execution, as defined by the Access Control Singleton contract.
+
 ### AccessControlledStorage
 
 ```solidity
@@ -22,7 +25,7 @@ Checks if msg.sender has `role`, reverts if not.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| role_ | bytes32 | the role to be tested, defined in Roles.sol and set in AccessManager instance. |
+| role_ | bytes32 | the role to be tested, defined in Roles.sol and set in AccessControlSingleton instance. |
 
 ### setAccessControl
 
@@ -30,7 +33,7 @@ Checks if msg.sender has `role`, reverts if not.
 function setAccessControl(address accessControl_) public
 ```
 
-Sets AccessManager instance. Restricted to PROTOCOL_ADMIN_ROLE
+Sets AccessControlSingleton instance. Restricted to PROTOCOL_ADMIN_ROLE
 
 #### Parameters
 
@@ -44,6 +47,8 @@ Sets AccessManager instance. Restricted to PROTOCOL_ADMIN_ROLE
 function getAccessControl() public view returns (address)
 ```
 
+Gets the global Access Control Singleton configured for the protocol.
+
 ### __AccessControlledUpgradeable_init
 
 ```solidity
@@ -56,12 +61,12 @@ Initializer method, access point to initialize inheritance tree.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| accessControl_ | address | address of AccessManager. |
+| accessControl_ | address | address of AccessControlSingleton. |
 
-### hasRole
+### _hasRole
 
 ```solidity
-function hasRole(bytes32 role_, address account_) internal view returns (bool)
+function _hasRole(bytes32 role_, address account_) internal view returns (bool)
 ```
 
 Checks if `account has `role` assigned.
@@ -70,7 +75,7 @@ Checks if `account has `role` assigned.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| role_ | bytes32 | the role to be tested, defined in Roles.sol and set in AccessManager instance. |
+| role_ | bytes32 | the role to be tested, defined in Roles.sol and set in AccessControlSingleton instance. |
 | account_ | address | the address to be tested for the role. |
 
 #### Return Values

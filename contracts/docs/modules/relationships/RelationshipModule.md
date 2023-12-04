@@ -12,7 +12,6 @@ Relationship types are configurable, allowing to link together different types o
 - Addresses
 - External NFTs
 And combinations of them.
-This allows Story Protocol to track attribution, IP remixes, sublicensing...
 NOTE: This is an alpha version, a more efficient way of storing and verifying relationships will be implemented in the future.
 
 ### constructor
