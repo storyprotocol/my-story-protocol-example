@@ -49,12 +49,12 @@ const main = async () => {
   // Create an IP Asset for the story content
   const storyName = "Alice In Wonderland";
   const storyCreation = await client.ipAsset.create({
-    "name": storyName,
-    "type": 0,
-    "ipOrgId": response.ipOrgId,
-    "owner": account.address,
-    "mediaUrl": mdFilePath.uri,
-    "txOptions": { waitForTransaction: true }
+    name: storyName,
+    typeIndex: 0,
+    ipOrgId: response.ipOrgId,
+    owner: account.address,
+    mediaUrl: mdFilePath.uri,
+    txOptions: { waitForTransaction: true }
   });
   console.log(`IP Asset (${storyName}) created at transaction hash ${storyCreation.txHash}`,
     `IP Asset ID: ${storyCreation.ipAssetId}`);
@@ -69,12 +69,12 @@ const main = async () => {
   // Create an IP Asset for the character "Alice"
   const characterName = "Alice";
   const characterCreation = await client.ipAsset.create({
-    "name": characterName,
-    "type": 1,
-    "ipOrgId": response.ipOrgId,
-    "owner": account.address,
-    "mediaUrl": imageFlamingoPath.uri,
-    "txOptions": { waitForTransaction: true }
+    name: characterName,
+    typeIndex: 1,
+    ipOrgId: response.ipOrgId,
+    owner: account.address,
+    mediaUrl: imageFlamingoPath.uri,
+    txOptions: { waitForTransaction: true }
   });
   console.log(`IP Asset (${characterName}) created at transaction hash ${characterCreation.txHash}`,
     `IP Asset ID: ${characterCreation.ipAssetId}`);
@@ -87,15 +87,15 @@ const main = async () => {
   console.log("Character IP Asset Information", characterInfo);
   
   // Create a relationship type between above two IP assets
-  const appearInRelType = await client.relationship.registerRelationshipType({
+  const appearInRelType = await client.relationshipType.register({
     ipOrgId: response.ipOrgId,
     relType: "APPEAR_IN",
     relatedElements: {src: 1, dst: 1},
-    allowedSrcs: ["1"],
-    allowedDsts: ["0"],
+    allowedSrcIpAssetTypes: [1],
+    allowedDstIpAssetTypes: [0],
     preHooksConfig: [],
     postHooksConfig: [],
-    "txOptions": { waitForTransaction: true }
+    txOptions: { waitForTransaction: true }
   });
   console.log(`Relationship type created at transaction hash ${appearInRelType.txHash}`,
     `Is successful? ${appearInRelType.success}`);

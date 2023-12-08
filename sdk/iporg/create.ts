@@ -1,11 +1,11 @@
 // franchise/create.ts
-import { client } from '../utils';
+import { client, account } from '../utils';
 
 // Create a new IP Org
 client.ipOrg.create({
   name: "Alice in Wonderland Series",
   symbol: "ALICE",
-  owner: '0xc0246081FD87Fc0aa29570F7ABafD0A69a2Ca05F',
+  owner: account.address,
   ipAssetTypes: ['STORY', 'CHARACTER'],
   txOptions: { waitForTransaction: true }
 }).then(({ txHash, ipOrgId }) => {

@@ -1,12 +1,11 @@
-import { client } from '../utils';
-import { IPAssetType } from '@story-protocol/core-sdk';
+import { client, account } from '../utils';
 
 // Create an IP Asset
 client.ipAsset.create({
   name: "A Simple Story",
-  type: IPAssetType.STORY,
-  ipOrgId: "0x86310d77f44e66d2db850266f3f600256d123579",
-  owner: "0xc0246081FD87Fc0aa29570F7ABafD0A69a2Ca05F",
+  typeIndex: 0,
+  ipOrgId: "0xF509f04Ab4a926805312DD30accA4a2bcC18D98D",
+  owner: account.address,
   mediaUrl: "https://arweave.net/m-3wkEOwmCwfkv1A25qgo8WS3O3t8a9-e-vi5vrejWE",
   txOptions: {waitForTransaction: true}
 }).then(({ txHash, ipAssetId }) => {
