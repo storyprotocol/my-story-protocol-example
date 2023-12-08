@@ -23,5 +23,5 @@ $ npx ts-node <PATH_TO_TYPESCRIPT_FILE>
 For example:
 
 ```
-$ npx ts-node franchise/get.ts 
+$ npx ts-node sdk/iporg/get.ts
 ```

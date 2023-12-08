@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@story-protocol/core-sdk": "^0.1.0-alpha-rc.2"
+    "@story-protocol/core-sdk": "^0.1.0-alpha-rc.6"
   }
 }
